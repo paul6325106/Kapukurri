@@ -4,5 +4,11 @@
     <string name="app_name">Kapukurri</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_create_family_group">CreateFamilyGroupActivity</string>
+    <string name="title_activity_family_tree">FamilyTreeActivity</string>
+    <string name="title_activity_record_audio">RecordAudioActivity</string>
+    <string name="title_activity_add_info">AddInfoActivity</string>
+    <string name="title_activity_add_tags">AddTagsActivity</string>
+    <string name="title_activity_stories">StoriesActivity</string>
 
 </resources>

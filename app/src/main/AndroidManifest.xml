@@ -16,6 +16,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateFamilyGroupActivity"
+            android:label="@string/title_activity_create_family_group" >
+        </activity>
+        <activity
+            android:name=".FamilyTreeActivity"
+            android:label="@string/title_activity_family_tree" >
+        </activity>
+        <activity
+            android:name=".RecordAudioActivity"
+            android:label="@string/title_activity_record_audio" >
+        </activity>
+        <activity
+            android:name=".AddInfoActivity"
+            android:label="@string/title_activity_add_info" >
+        </activity>
+        <activity
+            android:name=".AddTagsActivity"
+            android:label="@string/title_activity_add_tags" >
+        </activity>
+        <activity
+            android:name=".StoriesActivity"
+            android:label="@string/title_activity_stories" >
+        </activity>
     </application>
 
 </manifest>
