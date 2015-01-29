@@ -43,7 +43,7 @@ public class AddTagsActivity extends ActionBarActivity {
     public void onConfigurationChanged(Configuration newConfig)
     {
         super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             startActivity(new Intent(this, FamilyTreeActivity.class));
         }
