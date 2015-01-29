@@ -15,7 +15,6 @@ public class StoriesActivity extends ActionBarActivity {
 
     private static MediaPlayer mediaPlayer;
 
-    private static String audioFilePath;
 //    private static Button stopButton;
 //    private static Button playButton;
 
@@ -71,17 +70,22 @@ public class StoriesActivity extends ActionBarActivity {
         }
     }
 
-    private void startPlaying() throws IOException {
+    private void startPlaying(String filePath) {
 //        playButton.setEnabled(false);
 //        stopButton.setEnabled(true);
 
         if (isPlaying) stopPlaying();
 
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setDataSource(audioFilePath);
-        mediaPlayer.prepare();
-        mediaPlayer.start();
-        isPlaying = true;
+        try {
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setDataSource(filePath);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            isPlaying = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            //TODO indicate malfunction to user
+        }
     }
 
     private void stopPlaying() {
