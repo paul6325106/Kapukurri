@@ -22,6 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_AUDIO = "audio";
     private static final String TABLE_PICTURES = "pictures";
     private static final String TABLE_VIDEOS = "videos";
+    private static final String TABLE_TAGS = "tags";
 
     private static final String KEY_PERSON_ID = "personid";
     private static final String KEY_PERSON_NAME = "name";
@@ -31,6 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_AUDIO_FILEPATH = "filepath";
     private static final String KEY_PICTURE_FILEPATH = "filepath";
     private static final String KEY_VIDEO_FILEPATH = "filepath";
+    private static final String KEY_TAG_WORD = "word";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -87,7 +89,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         );
         db.execSQL(CREATE_PICTURES_TABLE);
 
-        String CREATE_VIDEO_TABLE = String.format(
+        String CREATE_VIDEOS_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s TEXT PRIMARY KEY," +
                         "%s INTEGER" +
@@ -96,7 +98,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_VIDEO_FILEPATH,
                 KEY_STORY_ID
         );
-        db.execSQL(CREATE_VIDEO_TABLE);
+        db.execSQL(CREATE_VIDEOS_TABLE);
+
+        String CREATE_TAGS_TABLE = String.format(
+                "CREATE TABLE %s(" +
+                        "%s TEXT UNIQUE," +
+                        "%s INTEGER" +
+                        ")",
+                TABLE_TAGS,
+                KEY_TAG_WORD,
+                KEY_STORY_ID
+        );
+        db.execSQL(CREATE_TAGS_TABLE);
 
     }
 
@@ -217,6 +230,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_VIDEO_FILEPATH, video.getFilePath());
 
         db.insert(TABLE_VIDEOS, null, values);
+        db.close();
+    }
+
+    /**
+     * Adds a story tag to the database.
+     * @param tag the tag to be added
+     */
+    public void addTag(Tag tag) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_TAG_WORD, tag.getWord());
+        values.put(KEY_STORY_ID, tag.getStoryId());
+
+        db.insert(TABLE_TAGS, null, values);
         db.close();
     }
 
@@ -509,5 +537,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return videoList;
+    }
+
+    /**
+     * Retrieves all tags associated with a story.
+     * @param storyId the story id
+     * @return an arraylist of the tags
+     */
+    public List<Tag> getAllTags(int storyId) {
+        List<Tag> tagList = new ArrayList<Tag>();
+
+        String selectQuery = String.format(
+                "SELECT * FROM %s WHERE %s = %d",
+                TABLE_TAGS, KEY_STORY_ID, storyId
+        );
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Tag tag = new Tag(
+                        cursor.getString(0),
+                        Integer.parseInt(cursor.getString(1))
+                );
+                tagList.add(tag);
+            } while (cursor.moveToNext());
+        }
+
+        return tagList;
     }
 }
