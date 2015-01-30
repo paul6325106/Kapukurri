@@ -256,13 +256,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_PERSON_ENABLED, String.valueOf(1));
+        values.put(KEY_PERSON_ENABLED, String.valueOf(0));
 
         db.update(
                 TABLE_PEOPLE,
                 values,
                 KEY_PERSON_ID + " = ?",
-                new String[] { String.valueOf(1)}
+                new String[] { String.valueOf(personId) }
         );
     }
 
