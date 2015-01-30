@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class AddTagsActivity extends ActionBarActivity {
@@ -47,5 +48,11 @@ public class AddTagsActivity extends ActionBarActivity {
         {
             startActivity(new Intent(this, FamilyTreeActivity.class));
         }
+    }
+
+    public void gotoRecord(View view) {
+
+        startActivity(new Intent(this, RecordAudioActivity.class));
+
     }
 }

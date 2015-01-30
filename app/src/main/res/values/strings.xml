@@ -11,5 +11,7 @@
     <string name="title_activity_add_tags">Add Tags</string>
     <string name="title_activity_stories">Stories</string>
     <string name="title_activity_login">Login</string>
+    <string name="labelText">Tag details</string>
+    <string name="newlabelText">Add new tag here</string>
 
 </resources>
