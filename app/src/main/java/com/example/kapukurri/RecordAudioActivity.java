@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.widget.Toast;
 
 
 public class RecordAudioActivity extends ActionBarActivity {
@@ -56,6 +56,7 @@ public class RecordAudioActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_audio);
+
     }
 
     @Override

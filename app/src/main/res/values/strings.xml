@@ -10,5 +10,6 @@
     <string name="title_activity_add_info">Add Info</string>
     <string name="title_activity_add_tags">Add Tags</string>
     <string name="title_activity_stories">Stories</string>
+    <string name="title_activity_login">Login</string>
 
 </resources>
