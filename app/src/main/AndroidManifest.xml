@@ -10,11 +10,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:configChanges="keyboardHidden|orientation|screenSize" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,27 +23,33 @@
         </activity>
         <activity
             android:name=".CreateFamilyGroupActivity"
-            android:label="@string/title_activity_create_family_group" >
+            android:label="@string/title_activity_create_family_group"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity
             android:name=".FamilyTreeActivity"
-            android:label="@string/title_activity_family_tree" >
+            android:label="@string/title_activity_family_tree"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity
             android:name=".RecordAudioActivity"
-            android:label="@string/title_activity_record_audio" >
+            android:label="@string/title_activity_record_audio"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity
             android:name=".AddInfoActivity"
-            android:label="@string/title_activity_add_info" >
+            android:label="@string/title_activity_add_info"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity
             android:name=".AddTagsActivity"
-            android:label="@string/title_activity_add_tags" >
+            android:label="@string/title_activity_add_tags"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
         <activity
             android:name=".StoriesActivity"
-            android:label="@string/title_activity_stories" >
+            android:label="@string/title_activity_stories"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
         </activity>
     </application>
 

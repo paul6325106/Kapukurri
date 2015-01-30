@@ -36,12 +36,6 @@ public class RecordAudioActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        recordButton = (ImageButton) findViewById(R.id.button_record_audio);
-
-        if (!hasMicrophone()) {
-            recordButton.setEnabled(false);
-        }
     }
 
     protected static String getAudioFilepath() {
@@ -54,6 +48,12 @@ public class RecordAudioActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_audio);
+
+        recordButton = (ImageButton) findViewById(R.id.button_record_audio);
+
+        if (!hasMicrophone()) {
+            recordButton.setEnabled(false);
+        }
 
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
