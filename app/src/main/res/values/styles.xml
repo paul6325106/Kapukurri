@@ -2,6 +2,12 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="darkgreen">#5E9FA3</color>
+    <color name="intensepink">#F44D5E</color>
+    <color name="brightpink">#FF3D7F</color>
+    <color name="lightpink">#FF9E9D</color>
+    <color name="lightgreen">#7FC7AF</color>
+    <color name="yellow">#DAD8A7</color>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
