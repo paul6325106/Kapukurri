@@ -5,37 +5,44 @@ import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+
+import com.example.kapukurri.data.Audio;
+import com.example.kapukurri.data.DatabaseHandler;
+import com.example.kapukurri.data.Story;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class StoriesActivity extends ActionBarActivity {
 
     private static MediaPlayer mediaPlayer;
 
-//    private static Button stopButton;
-//    private static Button playButton;
+    private ImageButton playButton;
 
     private boolean isPlaying = false;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-//        playButton = (Button) findViewById(R.id.playButton);
-//        stopButton = (Button) findViewById(R.id.stopButton);
-
-//        playButton.setEnabled(true);
-//        stopButton.setEnabled(false);
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stories);
+
+        playButton = (ImageButton) findViewById(R.id.button_play_audio);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPlaying) {
+                    stopPlaying();
+                } else {
+                    startPlaying(getFirstAudioFilepath());
+                }
+            }
+        });
     }
 
     @Override
@@ -71,9 +78,6 @@ public class StoriesActivity extends ActionBarActivity {
     }
 
     private void startPlaying(String filePath) {
-//        playButton.setEnabled(false);
-//        stopButton.setEnabled(true);
-
         if (isPlaying) stopPlaying();
 
         try {
@@ -88,10 +92,21 @@ public class StoriesActivity extends ActionBarActivity {
         }
     }
 
-    private void stopPlaying() {
-//        stopButton.setEnabled(false);
-//        playButton.setEnabled(true);
+    /**
+     * No time to actually load the data into a layout properly.
+     * Just a wireframe and a button for demonstration purposes.
+     * To this end, this method retrieves the first available audio filepath.
+     */
+    private String getFirstAudioFilepath() {
+        DatabaseHandler dbh = DatabaseHandler.getInstance(this);
+        List<Story> stories = dbh.getAllStories(0); //XXX using id 0 as placeholder, as in RecordAudioActivity
+        int storyId = stories.get(0).getStoryId();
+        List<Audio> audios = dbh.getAllAudio(storyId);
+        Log.d("WUBWUBWUB", "Audio filepath: " + audios.get(0).getFilePath());
+        return audios.get(0).getFilePath();
+    }
 
+    private void stopPlaying() {
         if (isPlaying) {
             mediaPlayer.stop();
             //mediaPlayer.reset();
