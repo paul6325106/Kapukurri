@@ -6,10 +6,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
 public class FamilyTreeActivity extends ActionBarActivity {
+
+    private boolean tapped;
+
+    {
+        tapped = false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +55,17 @@ public class FamilyTreeActivity extends ActionBarActivity {
         if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             startActivity(new Intent(this, RecordAudioActivity.class));
         }
+    }
+
+    public void changeFamilyTreeFocus(View view) {
+
+        if (!tapped) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.familyTreeView);
+            layout.setBackgroundResource(R.drawable.familytreefocus);
+            tapped = true;
+        } else {
+            startActivity(new Intent(this, StoriesActivity.class));
+        }
+
     }
 }
