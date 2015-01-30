@@ -9,7 +9,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.example.kapukurri.data.Audio;
+import com.example.kapukurri.data.DatabaseHandler;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -20,9 +25,7 @@ public class RecordAudioActivity extends ActionBarActivity {
 
     private static MediaRecorder mediaRecorder;
 
-    private static String audioFilePath;
-//    private static Button stopButton;
-//    private static Button recordButton;
+    private static ImageButton recordButton;
 
     private boolean isRecording = false;
 
@@ -35,15 +38,11 @@ public class RecordAudioActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-//        recordButton = (Button) findViewById(R.id.recordButton);
-//        stopButton = (Button) findViewById(R.id.stopButton);
+        recordButton = (ImageButton) findViewById(R.id.button_record_audio);
 
-//        if (!hasMicrophone()) {
-//            stopButton.setEnabled(false);
-//            recordButton.setEnabled(false);
-//        } else {
-//            stopButton.setEnabled(false);
-//        }
+        if (!hasMicrophone()) {
+            recordButton.setEnabled(false);
+        }
     }
 
     protected static String getAudioFilepath() {
@@ -56,6 +55,19 @@ public class RecordAudioActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_audio);
+
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRecording) {
+                    //recordButton.setImageDrawable();
+                    stopRecording();
+                } else {
+                    //recordButton.setImageDrawable();
+                    startRecording();
+                }
+            }
+        });
     }
 
     @Override
@@ -94,8 +106,6 @@ public class RecordAudioActivity extends ActionBarActivity {
         if (isRecording) stopRecording();
 
         isRecording = true;
-//        stopButton.setEnabled(true);
-//        recordButton.setEnabled(false);
 
         try {
             mediaRecorder = new MediaRecorder();
@@ -106,7 +116,11 @@ public class RecordAudioActivity extends ActionBarActivity {
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             mediaRecorder.prepare();
             mediaRecorder.start();
-            //TODO write filepath to database
+
+            DatabaseHandler dbh = DatabaseHandler.getInstance(this);
+            int storyId = dbh.addStory(0); //XXX using 0 as default personId for now
+            dbh.addAudio(new Audio(filepath, storyId));
+
         } catch (IOException e) {
             e.printStackTrace();
             //TODO indicate malfunction to user
@@ -114,15 +128,14 @@ public class RecordAudioActivity extends ActionBarActivity {
     }
 
     private void stopRecording() {
-//        stopButton.setEnabled(false);
-
         if (isRecording) {
             mediaRecorder.stop();
             //mediaRecorder.reset();
             mediaRecorder.release();
             mediaRecorder = null;
             isRecording = false;
-//            recordButton.setEnabled(true);
         }
     }
+
+
 }
