@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="front_page_heading">90dp</dimen>
+    <dimen name="labelText">32dp</dimen>
 </resources>
