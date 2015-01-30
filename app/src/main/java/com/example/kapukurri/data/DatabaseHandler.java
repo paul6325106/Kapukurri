@@ -59,55 +59,65 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_STORIES_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "%s INTEGER" +
+                        "%s INTEGER," +
+                        "FOREIGN KEY(%s) REFERENCES %s(%s)" +
                         ")",
                 TABLE_STORIES,
                 KEY_STORY_ID,
-                KEY_PERSON_ID
+                KEY_PERSON_ID,
+                KEY_PERSON_ID, TABLE_PEOPLE, KEY_PERSON_ID
         );
         db.execSQL(CREATE_STORIES_TABLE);
 
         String CREATE_AUDIO_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s TEXT PRIMARY KEY," +
-                        "%s INTEGER" +
+                        "%s INTEGER," +
+                        "FOREIGN KEY(%s) REFERENCES %s(%s)" +
                         ")",
                 TABLE_AUDIO,
                 KEY_AUDIO_FILEPATH,
-                KEY_STORY_ID
+                KEY_STORY_ID,
+                KEY_STORY_ID, TABLE_STORIES, KEY_STORY_ID
         );
         db.execSQL(CREATE_AUDIO_TABLE);
 
         String CREATE_PICTURES_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s TEXT PRIMARY KEY," +
-                        "%s INTEGER" +
+                        "%s INTEGER," +
+                        "FOREIGN KEY(%s) REFERENCES %s(%s)" +
                         ")",
                 TABLE_PICTURES,
                 KEY_PICTURE_FILEPATH,
-                KEY_STORY_ID
+                KEY_STORY_ID,
+                KEY_STORY_ID, TABLE_STORIES, KEY_STORY_ID
         );
         db.execSQL(CREATE_PICTURES_TABLE);
 
         String CREATE_VIDEOS_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s TEXT PRIMARY KEY," +
-                        "%s INTEGER" +
+                        "%s INTEGER," +
+                        "FOREIGN KEY(%s) REFERENCES %s(%s)" +
                         ")",
                 TABLE_VIDEOS,
                 KEY_VIDEO_FILEPATH,
-                KEY_STORY_ID
+                KEY_STORY_ID,
+                KEY_STORY_ID, TABLE_STORIES, KEY_STORY_ID
         );
         db.execSQL(CREATE_VIDEOS_TABLE);
 
         String CREATE_TAGS_TABLE = String.format(
                 "CREATE TABLE %s(" +
                         "%s TEXT UNIQUE," +
-                        "%s INTEGER" +
+                        "%s INTEGER," +
+                        "FOREIGN KEY(%s) REFERENCES %s(%s)" +
                         ")",
                 TABLE_TAGS,
                 KEY_TAG_WORD,
-                KEY_STORY_ID
+                KEY_STORY_ID,
+                KEY_STORY_ID, TABLE_STORIES, KEY_STORY_ID
         );
         db.execSQL(CREATE_TAGS_TABLE);
 
