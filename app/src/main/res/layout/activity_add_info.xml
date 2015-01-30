@@ -4,9 +4,92 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/back3"
     tools:context="com.example.kapukurri.AddInfoActivity">
 
-    <TextView android:text="@string/title_activity_add_info" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:text="@string/title_activity_add_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/recycle64"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/write18"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/photo182"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/placeholder19"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        >
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/upload95"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:onClick="gotoTag" />
+
+    </LinearLayout>
 
 </RelativeLayout>
