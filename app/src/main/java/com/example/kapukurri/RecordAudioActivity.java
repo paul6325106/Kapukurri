@@ -59,10 +59,10 @@ public class RecordAudioActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isRecording) {
-                    //recordButton.setImageDrawable();
+                    recordButton.setImageResource(R.drawable.voice21);
                     stopRecording();
                 } else {
-                    //recordButton.setImageDrawable();
+                    recordButton.setImageResource(R.drawable.recording);
                     startRecording();
                 }
             }

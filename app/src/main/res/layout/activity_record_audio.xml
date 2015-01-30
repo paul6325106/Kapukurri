@@ -7,12 +7,12 @@
     tools:context="com.example.kapukurri.RecordAudioActivity">
 
     <ImageButton
-    android:id="@+id/button_record_audio"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:contentDescription="Record button"
-    android:background="@null"
+        android:id="@+id/button_record_audio"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/voice21"
+        android:contentDescription="Record button"
+        android:background="@null"
     />
-    <!--android:src="@drawable/button_record_audio"-->
 
 </RelativeLayout>
