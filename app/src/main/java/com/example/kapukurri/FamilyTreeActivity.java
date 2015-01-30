@@ -45,10 +45,7 @@ public class FamilyTreeActivity extends ActionBarActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "LANDSCAPE", Toast.LENGTH_SHORT);
             startActivity(new Intent(this, RecordAudioActivity.class));
-        } else {
-            Toast.makeText(this, "PORTRAIT", Toast.LENGTH_SHORT);
         }
     }
 }

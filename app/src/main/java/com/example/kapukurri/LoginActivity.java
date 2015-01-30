@@ -1,6 +1,7 @@
 package com.example.kapukurri;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,8 +42,12 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void loginClick(View view) {
-
-        startActivity(new Intent(this, FamilyTreeActivity.class));
-
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            startActivity(new Intent(this, RecordAudioActivity.class));
+        } else {
+            startActivity(new Intent(this, FamilyTreeActivity.class));
+        }
+        finish();
     }
 }

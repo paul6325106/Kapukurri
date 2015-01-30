@@ -33,11 +33,6 @@ public class RecordAudioActivity extends ActionBarActivity {
         return pmanager.hasSystemFeature(PackageManager.FEATURE_MICROPHONE);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
     protected static String getAudioFilepath() {
         return Environment.getExternalStorageDirectory().getAbsolutePath() + "/"
                 + (new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss").format(new Date()))
@@ -61,6 +56,8 @@ public class RecordAudioActivity extends ActionBarActivity {
                 if (isRecording) {
                     recordButton.setImageResource(R.drawable.voice21);
                     stopRecording();
+                    startActivity(new Intent(v.getContext(), AddInfoActivity.class));
+                    finish();
                 } else {
                     recordButton.setImageResource(R.drawable.recording);
                     startRecording();
@@ -102,10 +99,6 @@ public class RecordAudioActivity extends ActionBarActivity {
     }
 
     private void startRecording () {
-        if (isRecording) stopRecording();
-
-        isRecording = true;
-
         try {
             mediaRecorder = new MediaRecorder();
             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -119,6 +112,8 @@ public class RecordAudioActivity extends ActionBarActivity {
             DatabaseHandler dbh = DatabaseHandler.getInstance(this);
             int storyId = dbh.addStory(0); //XXX using 0 as default personId for now
             dbh.addAudio(new Audio(filepath, storyId));
+
+            isRecording = true;
 
         } catch (IOException e) {
             e.printStackTrace();
